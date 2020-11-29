@@ -4,17 +4,26 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Purchased Items</title>
+        <title>#{msgs.purchasedTitle}</title>
+
+        <!-- Required meta tags for Bootstrap -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+        <!-- Bootstrap CSS -->
+        <h:outputStylesheet library="css" name="bootstrap-4.5.2-dist/css/bootstrap.min.css"/>
+
+        <!-- Custom CSS -->
+        <h:outputStylesheet library="css" name="styles.css"/>
     </h:head>
 
     <h:body>
         <f:view>
             <!-- Button to Home -->
-            <div class="container">
+            <div class="container my-3">
                 <div class="row">
                     <div class="col-sm-12 d-flex flex-row-reverse">
                         <h:form>
-                            <h:commandButton styleClass="btn btn-primary" action="productDetails" value="Return"/>
+                            <h:commandButton styleClass="btn btn-primary" action="productDetails" value="#{msgs.return}"/>
                         </h:form>
                     </div>
                 </div>
@@ -32,7 +41,7 @@
                     <div class="col-sm-12">
                         <h:form>
                             <div class="w-100">
-                                <h:dataTable value="#{user_session.lastPurchase}" var="t" border="1">
+                                <h:dataTable styleClass="table table-striped table-bordered dt-responsive w-100" value="#{user_session.lastPurchase}" var="t" border="1">
                                     <h:column>
                                         <f:facet name="header">#{msgs.serialNumber}</f:facet>
                                         <h:outputText value="#{t.serialNum}"/>
@@ -65,9 +74,9 @@
                                 </h:dataTable>
                             </div>
 
-                            <div class="mt-4">
+                            <div class="d-flex justify-content-end mt-4">
                                 <strong>
-                                    <h:outputText value="#{msgs.totalPricePrompt}: " />
+                                    <h:outputText value="#{msgs.totalPricePrompt}" />
                                 </strong>
                                 <h:outputText  value="#{user_session.getLastPurchaseTotalPrice()}" />
                             </div>
